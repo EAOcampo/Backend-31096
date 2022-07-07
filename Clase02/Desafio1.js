@@ -11,7 +11,7 @@ class Usuario {
         return `Mi nombre es ${this.nombre} ${this.apellido}`
     }
     addMascotas(pet){
-        this.mascotas.push(...pet)
+        this.mascotas.push(pet)
     }
     countMascotas(){
         return this.mascotas.length
@@ -30,11 +30,22 @@ class Usuario {
 }
 
 const usr1 = new Usuario('Edgar','Ocampo','Pablito','el viejo y el mar',['patito','perrito','sapo']);
-const contador = usr1.countMascotas()
 const books = usr1.getBookNames()
+usr1.addBooks('Bernardo', 'William and the king')
+usr1.addBooks('Bernardo', 'William the III')
+usr1.addMascotas('perrito')
+usr1.addMascotas('loro')
+
+
+
+const contador = usr1.countMascotas()
+// const books = usr1.getBookNames()
 const nombre = usr1.getFullName()
 
-console.log(usr1);
+// console.log(usr1);
 console.log(contador);
+console.log(usr1.mascotas);
+console.log(usr1.mascotas);
 console.log(books);
-console.log(nombre);
+// console.log(books);
+// console.log(nombre);
