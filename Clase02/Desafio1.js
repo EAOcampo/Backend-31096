@@ -1,11 +1,9 @@
 class Usuario {
-    constructor(nombre,apellido,autor,nombreLibro,mascotas){
+    constructor(nombre,apellido){
         this.nombre = nombre;
         this.apellido = apellido;
-        this.libro = [
-            {autor: autor, nombre: nombreLibro}
-        ];
-        this.mascotas = mascotas;
+        this.libro = []
+        this.mascotas = [];
     }
     getFullName(){
         return `Mi nombre es ${this.nombre} ${this.apellido}`
@@ -16,36 +14,33 @@ class Usuario {
     countMascotas(){
         return this.mascotas.length
     }
-    addBooks(book) {
-        this.libro.push(book);
+    addBooks(book,author) {
+        this.libro.push({titulo:book, autor:author});
     }
     getBookNames(){
-        const bookAuthor = this.libro.map((book) => {
-            console.log(book);
-            return book.nombre
-        })
-        return bookAuthor;
+        const book = []
+        this.libro.forEach(libros=>book.push(libros.titulo))
+        return book
     }
 
 }
 
-const usr1 = new Usuario('Edgar','Ocampo','Pablito','el viejo y el mar',['patito','perrito','sapo']);
-const books = usr1.getBookNames()
-usr1.addBooks('Bernardo', 'William and the king')
-usr1.addBooks('Bernardo', 'William the III')
-usr1.addMascotas('perrito')
-usr1.addMascotas('loro')
+// Pruebas con los Libros
+const usr1 = new Usuario('Edgar','Ocampo');
+usr1.addBooks('Harry potter ', 'J.K. Rowling')
+usr1.addBooks('Habitos Atomicos', 'James Clear')
+usr1.addBooks('el extraño caso del dr. jekyll y mr. hyde ', 'Robert Louis Stevenson')
+console.log(usr1.libro);
 
+// Pruebas agregando animales
 
-
-const contador = usr1.countMascotas()
-// const books = usr1.getBookNames()
-const nombre = usr1.getFullName()
-
-// console.log(usr1);
-console.log(contador);
+usr1.addMascotas('Perico')
+usr1.addMascotas('Pollo')
+usr1.addMascotas('Pato')
+usr1.addMascotas('Elefante')
 console.log(usr1.mascotas);
+usr1.addMascotas('Gato')
 console.log(usr1.mascotas);
-console.log(books);
-// console.log(books);
-// console.log(nombre);
+console.log(usr1.countMascotas());
+
+
